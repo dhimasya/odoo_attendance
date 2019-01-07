@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_machine_form" model="ir.ui.view">
+        <field name="name">hr.machine.form</field>
+        <field name="model">hr.machine</field>
+        <field name="arch" type="xml">
+            <form string="Biometric Device">
+                <header>
+                    <button name="test_connection" type="object" string="Test Connection" class="oe_highlight" icon="fa-link "/>
+                    <button name="clear_attendance" type="object" string="Clear Data" class="oe_highlight" icon="fa-remove " confirm="Are you sure you want to clear attendance data?"/>
+                    <button name="download_attendance" type="object" string="Download Data" class="oe_highlight" icon="fa-download " confirm="Are you sure you want to download attendance data?" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" placeholder="Machine IP Address"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="port" placeholder="Machine UDP COMM. Port"/>
+                            <field name="timezone" placeholder="Machine Timezone"/>
+                            <field name="address_id"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_machine_tree" model="ir.ui.view">
+        <field name="name">hr.machine.tree</field>
+        <field name="model">hr.machine</field>
+        <field name="arch" type="xml">
+            <tree string="Biometric Machine">
+                <field name="name"/>
+                <field name="port"/>
+                <field name="timezone"/>
+                <field name="address_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_machine_action" model="ir.actions.act_window">
+        <field name="name">Devices</field>
+        <field name="res_model">hr.machine</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record> 
+
+    <menuitem id="hr_machine_menu" parent="hr_attendance.menu_hr_attendance_root" sequence="50" name="Biometric Manager"/>
+    <menuitem id="hr_machine_sub_menu" parent="hr_attendance_machine.hr_machine_menu" name="Devices" action="hr_attendance_machine.hr_machine_action" sequence="1"/>
+</odoo>
+
