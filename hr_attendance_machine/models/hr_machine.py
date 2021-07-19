@@ -105,14 +105,14 @@ class HrMachine(models.Model):
                         ], limit=1, order="check_in desc")
                         if row.punch == 0: #check-in 
                             if not open_attendance:
-                                last_attendance = HrAttendance.search([
-                                    ('employee_id', '=', employee.id)
-                                ], limit=1, order="check_in desc")
-                                if last_attendance.check_in.date() != timestamp_utc.date():
-                                    HrAttendance.create({
-                                        'employee_id': employee.id,
-                                        'check_in': timestamp_utc
-                                    })
+                                # last_attendance = HrAttendance.search([
+                                #     ('employee_id', '=', employee.id),
+                                # ], limit=1, order="check_in desc")
+                                # if last_attendance.check_in.date() != timestamp_utc.date():
+                                HrAttendance.create({
+                                    'employee_id': employee.id,
+                                    'check_in': timestamp_utc
+                                })
                         if row.punch == 1: #check-out
                             open_attendance.write({
                                 'check_out': timestamp_utc
