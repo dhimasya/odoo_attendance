@@ -23,7 +23,7 @@ class HrMachine(models.Model):
         device = ZK(self.name, port=self.port, timeout=60, password=0, force_udp=False, ommit_ping=False)
         return device.connect()
 
-    @api.multi
+    # @api.multi
     def test_connection(self):
         for machine in self:
             conn = False
@@ -37,7 +37,7 @@ class HrMachine(models.Model):
             else:
                 raise UserError(_("device connection test failed!"))
     
-    @api.multi
+    # @api.multi
     def clear_attendance(self):
         for machine in self:
             conn = False
@@ -64,7 +64,7 @@ class HrMachine(models.Model):
             machine.download_attendance()
             
 
-    @api.multi
+    # @api.multi
     def download_attendance(self):
         MachineRecord = self.env['hr.machine.record']
         HrAttendance = self.env['hr.attendance']

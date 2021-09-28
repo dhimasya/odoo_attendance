@@ -1,6 +1,6 @@
 {
     'name': 'Attendance Machine Integration',
-    'version': '12.0.1.0.0',
+    'version': '13.0.1.0.0',
     'summary': 'Integrate attendance machine with attendance',
     'category': 'Human Resources',
     'author': 'PortCities Ltd',
@@ -24,6 +24,7 @@
         'views/hr_machine_views.xml',
         'views/hr_machine_report_views.xml',
     ],
+    'pre_init_hook' : 'pre_init_hook',
     'installable': True,
     'auto_install': False,
     'application': False,
