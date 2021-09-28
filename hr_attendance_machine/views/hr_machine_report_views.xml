@@ -18,7 +18,7 @@
         <field name="name">hr.machine.report.tree</field>
         <field name="model">hr.machine.report</field>
         <field name="arch" type="xml" >
-            <tree string="Attendance" create="false" delete="false" colors="green:type in ('0');red:type in ('1');">
+            <tree string="Attendance" create="false" delete="false">
                 <field name="date"/>
                 <field name="name"/>
                 <field name="type"/>
@@ -32,8 +32,7 @@
     <record id="hr_machine_report_action" model="ir.actions.act_window">
         <field name="name">Attendance Logs</field>
         <field name="res_model">hr.machine.report</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">tree,form</field>
         <field name="context">{'search_default_my_attendance':1}</field>
         <field name="search_view_id" ref="hr_machine_report_search" />
     </record>
