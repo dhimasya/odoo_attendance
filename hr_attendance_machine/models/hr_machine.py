@@ -90,6 +90,7 @@ class HrMachine(models.Model):
                     for row in employee_attendances:
                         timestamp = machine_tz.localize(row.timestamp)
                         timestamp_utc = timestamp.astimezone(pytz.utc)
+                        timestamp_utc = timestamp_utc.replace(tzinfo=None)
                         MachineRecord.create({
                             'employee_id': employee.id,
                             'machine_id': machine.id,
